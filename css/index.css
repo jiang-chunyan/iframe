@@ -1,0 +1,309 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    padding: 0;
+    font-family: 'Microsoft YaHei', 'SimHei', '华文细黑', 'SimSun';
+    overflow: hidden;
+}
+html,body,iframe {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0
+}
+.img-head {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    /* margin-top: 2px; */
+}
+.showiframe {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+
+    width: 50%;
+    height: 80%;
+    margin: 0 auto;
+}
+#bg {
+    display: none;
+    position: fixed;
+    top: 0%;  left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.2;
+    opacity:0.2;
+    filter: alpha(opacity=20);
+}
+#bg2 {
+    display: none;
+    position: fixed;
+    top: 0%;  left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index:1001;
+    -moz-opacity: 0.2;
+    opacity:0.2;
+    filter: alpha(opacity=20);
+}
+#wrap {
+    position: relative;
+    top: 10%;
+    width: 42%;
+    height: 89%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #ccc;
+    z-index: 1;
+}
+iframe {
+    border: none;
+    height: 100%;
+}
+.header {
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #e0e0e0;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.header > div:nth-child(1) {
+    margin-left: 30px;
+    font-size: 16px;
+    color: #333;
+}
+.header > div:nth-child(2) {
+    margin-right: 5px;
+    display: inline-flex;
+}
+.header div:nth-child(2) img {
+    cursor: pointer;
+}
+.header div:nth-child(2) img:nth-child(2),
+.header div:nth-child(2) img:nth-child(3),
+.header div:nth-child(2) img:nth-child(4),
+.header div:nth-child(2) img:nth-child(5),
+.header div:nth-child(2) img:nth-child(6) {
+    margin-left: 12px;
+}
+
+.headerBox {
+    border: 1px solid #e0e0e0;
+    width: 180px;
+    position: absolute;
+    right: 2.7%;
+    right: 43px;
+    background: white;
+    top: 70px;
+    display: none;
+    z-index: 9999;
+}
+.sanjiao_border:before,.sanjiao_border .before{/*.before为ie6下用到*/
+    content: ''; /*伪类下的属性*/
+    display:block;
+    position:absolute;
+    top:-21px;
+    width:0;
+    height:0;
+    overflow:hidden;
+    font-size: 0;     /*是因为, 虽然宽高度为0, 但在IE6下会具有默认的 */
+    line-height: 0;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+    border:10px;
+    border-style:dashed dashed solid dashed;
+    border-color:transparent transparent #e0e0e0 transparent;
+    right: 12px;
+}
+.sanjiao_border:after,.sanjiao_border .after{/*.after为ie6下用到*/
+    content: '';/*伪类下的属性*/
+    display:block;
+    width:0;
+    height:0;
+    overflow:hidden;
+    font-size: 0;     /*是因为, 虽然宽高度为0, 但在IE6下会具有默认的 */
+    line-height: 0;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+    border:10px;
+    border-style:dashed dashed solid dashed;
+    border-color:transparent transparent #fff transparent;
+    position:absolute;
+    right:12px;
+    top:-20px;
+}
+.headerInfo {
+    height: 83px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerImg {
+    margin-right: 7px;
+    margin-left: 15px;
+}
+.headerInfo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.headerInfo span {
+    display: inline-block;
+    color: #333;
+}
+.name {
+    font-size: 14px;
+}
+.email {
+    font-size: 10px;
+}
+
+.logOut {
+    border-top: 1px solid #e0e0e0;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+.logOut:hover {
+    background: #ededed;
+}
+
+
+
+@media screen and (min-width:320px) and (max-width:767px) {
+    #wrap {
+        width: 95%;
+
+        /* ios touch问题处理 */
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+    }
+
+    .header > div:nth-child(1) {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+    .header > div:nth-child(2) img:nth-child(2),
+    .header > div:nth-child(2) img:nth-child(3),
+    .header > div:nth-child(2) img:nth-child(4),
+    .header > div:nth-child(2) img:nth-child(5),
+    .header > div:nth-child(2) img:nth-child(6) {
+        margin-left: 4px;;
+    }
+    .header > div:nth-child(2) {
+        margin-right: 0;
+        white-space: nowrap;
+    }
+    .headerBox {
+        right: 30px;
+    }
+}
+
+
+/* loading效果 */
+.loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -0.2em 0 0 -0.2em;
+    text-indent: -9999em;
+    border-top: 0.3em solid rgb(120, 120, 120);
+    border-right: 0.3em solid rgb(120, 120, 120);
+    border-bottom: 0.3em solid rgb(120, 120, 120);
+    border-left: 0.3em solid #fff;
+    -moz-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -moz-animation: loader 1s infinite linear;
+    -webkit-animation: loader 1s infinite linear;
+    animation: loader 1s infinite linear;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+    -webkit-transition: all 1.5s ease;
+    transition: all 1.5s ease;
+}
+
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+}
+
+.curtain {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    -moz-transition: all 600ms ease;
+    -o-transition: all 600ms ease;
+    -webkit-transition: all 600ms ease;
+    transition: all 600ms ease;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+@-webkit-keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes loader {
+    0% {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.is-loading {
+    overflow: hidden;
+}
+
+.is-loading .curtain {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    z-index: 99;
+}
+
+.is-loading .loader {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+}
