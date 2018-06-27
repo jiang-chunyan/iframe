@@ -27,7 +27,8 @@ html,body,iframe {
     transform: translate(-50%, -50%);
     z-index: 2000;
 
-    width: 50%;
+    /* width: 50%; */
+    width: 720px;
     height: 80%;
     margin: 0 auto;
 }
@@ -57,9 +58,9 @@ html,body,iframe {
 }
 #wrap {
     position: relative;
-    top: 10%;
+    top: 80px;
     width: 42%;
-    height: 89%;
+    /* height: 89%; */
     margin-left: auto;
     margin-right: auto;
     border: 2px solid #ccc;
@@ -68,6 +69,21 @@ html,body,iframe {
 iframe {
     border: none;
     height: 100%;
+}
+.modal {
+    top: 20%!important;
+}
+.modal-footer {
+    border-top: 0px solid #e5e5e5!important;
+}
+.modal-header {
+    padding: 11px!important;
+}
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 500px!important;
+        margin: 30px auto;
+    }
 }
 .header {
     background-color: #f4f4f4;
@@ -182,11 +198,14 @@ iframe {
 }
 
 
-
+@media screen and (min-width:768px) and (max-width:1500px) {
+    #wrap {
+        width: 65%;
+    }
+}
 @media screen and (min-width:320px) and (max-width:767px) {
     #wrap {
         width: 95%;
-
         /* ios touch问题处理 */
         -webkit-overflow-scrolling: touch;
         overflow-y: scroll;
@@ -209,6 +228,17 @@ iframe {
     }
     .headerBox {
         right: 30px;
+    }
+    .edit {
+        display: none!important;
+    }
+}
+@media screen and (min-width:501px) and (max-width:767px) {
+    #wrap {
+        width: 80%;
+        /* ios touch问题处理 */
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
     }
 }
 
