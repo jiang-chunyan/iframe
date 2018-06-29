@@ -27,7 +27,7 @@ html,body,iframe {
     transform: translate(-50%, -50%);
     z-index: 2000;
 
-    /* width: 50%; */
+    
     width: 720px;
     height: 52%;
     margin: 0 auto;

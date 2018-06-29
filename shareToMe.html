@@ -14,12 +14,12 @@
 
     <style>
         div.m-window.share-file-window {
-            width: 720px;
+            width: 100%;
         }
         @media screen and (min-width:320px) and (max-width:767px) {
-            div.m-window.share-file-window {
-                width: 100%!important;
-            }
+            /* div.m-window.share-file-window {
+                width: 90%!important;
+            } */
             .share-win .list-group .checkbox-link5 {
                 width: 100%;
             }
@@ -83,6 +83,11 @@
     </section>
     <footer class="window-footer text-right"></footer>
 </div>
-
+<script src="js/jquery-1.11.0.min.js"></script>
+<script>
+    if (window.screen.width >= 320 && window.screen.width <= 767) {
+        $('div.m-window.share-file-window.animated').css('width', '100%')
+    }
+</script>
 </body>
 </html>
