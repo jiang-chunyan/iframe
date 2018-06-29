@@ -1,0 +1,554 @@
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分享</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/introjs.css"/>
+    <link rel="stylesheet" href="css/nprogress.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/cropper.css">
+    <link rel="stylesheet" href="css/application.css">
+    <link rel="stylesheet" href="css/github-markdown.css">
+
+    <style>
+        div.m-window.share-file-window {
+            width: 720px;
+        }
+        @media screen and (min-width:320px) and (max-width:767px) {
+            div.m-window.share-file-window {
+                width: 100%!important;
+            }
+            .share-win .list-group .checkbox-link5 {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="m-window share-file-window animated" tabindex="1" style="height: auto;left:50%;top: 20%;transform: translate(-50%, -20%);margin-top:0;-webkit-box-shadow:none;box-shadow:none;">
+    <header class="window-header" style="cursor: default;"><span class="title"></span>
+    </header>
+    <section class="window-body">
+        <div id="share-window">
+            <div class="share-win">
+                <div class="">
+                    <div class="caption" style="display: none;">所有者</div>
+                    <div>
+                        <section class="block share-setting">
+                            <div class="">
+                                <div class="block-bd">
+                                    <div class="list-group share-set">
+                                        <div class="item setting">
+                                            <div class="left f-emph">公开链接共享</div>
+                                            <div class="right">
+                                                <div class="round-switch small tooltipped tooltipped-tc" aria-label="打开分享" id="openSwitch">
+                                                    <input class="toggle" id="view151" type="checkbox">
+                                                    <label for="view151"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item role">
+                                            <input id="link" class="form-control br-2" readonly="readonly">
+                                            <div class="list1 f-clb">
+                                                <div class="share-nav">
+                                                    <div class="list1-left" style="float: left;width: calc(100% - 168px);display: block;line-height: 36px;">
+                                                        <div class="">
+                                                            <div class="per-select" id="select2">
+                                                                <div class="m-dropdown-menu">
+                                                                    <div class="m-hd br-2" id="canwatch"></div>
+                                                                    <div class="dropdowm-select-list  with-shadow" id="list">
+                                                                        <ul></ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="checkbox-link4">
+                                                                    <div class="item-1 f-hide"><input class="password" disabled="true">
+                                                                        <button id="setpwd"></button>
+                                                                    </div>
+                                                                    <div class="m-chb is-inline" style="pointer-events: auto;white-space: nowrap;" id="pwdCheckBox" onclick="changePwd(this)">
+                                                                        <div class="box"></div>
+                                                                        <span class="label" id="setPwdLab" style="white-space: nowrap;">访问此链接需要输入密码</span></div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="checkbox-link5">
+                                                                        <div class="item-1 f-hide">
+                                                                            <span class="datepicker">
+                                                                            <input class="date-expire" placeholder="截止日期" type="text">
+                                                                            <i class="icon ep-expire-date" onclick="showDatePicker()"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="m-chb is-inline" style="pointer-events: auto;white-space: nowrap;" id="dateCheckBox" onclick="changeDate(this)">
+                                                                            <div class="box"></div>
+                                                                            <span class="label" style="white-space: nowrap;">设置分享截止日期</span></div>
+                                                                    </div>
+                                                                    <div class="checkbox-link6"></div>
+                                                                    <div class="link-watermark-checkbox"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list1-right m-qrcode f-fr" style="display: block;float: right;margin-left: 10px;line-height: 36px;position: relative;">
+                                                        <button class="qrcode-btn icon" title="扫描二维码快速加入">
+                                                            <div class="qrcode-pop f-tc" title="扫描二维码加入" style="display: none;">
+                                                                <div class="qrcode-canvas">
+                                                                    <canvas width="160" height="160"></canvas>
+                                                                </div>
+                                                                <div class="intro">
+                                                                    <p>扫描二维码快速加入</p>
+                                                                    <ul>
+                                                                        <li><i>打开微信</i><br>点击底部的“发现”<br>→使用“扫描QR Code”</li>
+                                                                        <li><i>打开永中云文档</i><br>→点击底部的“全部文件”<br>→使用左上角的“扫一扫”</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                    </div>
+                                                    <div class="list1-right" style="display: block;float: right;margin-left: 10px;line-height: 36px;">
+                                                        <a id="copyBtn" class="input-group-btn button done">
+                                                            <span>复制链接</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="loading"></div>
+        </div>
+    </section>
+    <footer class="window-footer text-right"></footer>
+</div>
+<!-- <script type="text/javascript" src="/node_modules/jquery/jquery.js"></script>
+<script type="text/javascript" src="/node_modules/underscore/underscore.js"></script>
+<script type="text/javascript" src="/node_modules/jquery-ui/ui/widgets/datepicker.js"></script>
+<script type="text/javascript" src="/node_modules/jquery-ui/ui/i18n/datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="/node_modules/jquery.qrcode/src/qrcode.js"></script>
+<script type="text/javascript" src="/node_modules/jquery.qrcode/src/jquery.qrcode.js"></script>
+<script type="text/javascript" src="/node_modules/clipboard/dist/clipboard.js"></script>
+<script type="text/javascript" src="/javascript/plugins/jquery.antr.js"></script> -->
+<script src="js/jquery-1.11.0.min.js"></script>
+<script>
+    if (window.screen.width >= 320 && window.screen.width <= 767) {
+        $('div.m-window.share-file-window.animated').css('width', '90%')
+    }
+</script>
+<script type="text/javascript">
+    var index = -1;
+    var url = "http:172.16.174.164";
+    var fid = "1729809041705111";
+    var fileName = "123123123123.docx";
+    var shareUrl = "";
+    var password = "";
+    var expireTime = "";
+    var linkRoleId = ;
+    var newShareAll = "2";
+    var roles = ;
+
+    $(function () {
+        init(true);
+    });
+
+    function init(silent) {
+        //文件名
+        $(".title").html(fileName);
+        //share url
+        $("#link").val(shareUrl);
+
+        if (silent) {
+            //权限
+            initList();
+            initRoles(silent);
+            //分享开关
+            initLinkShareSwitch();
+            //密码
+            passwordStatus(password != null && password != "" ? true : false, silent);
+            //截止日期
+            initExpireDate();
+            changeDatePanel(expireTime != null && expireTime != "" ? true : false, silent);
+            //启动剪贴板
+            listenToCopy();
+            //二维码
+            initQRcode();
+        }
+    }
+
+    function initList() {
+        $("#canwatch").html(roles[0].label);
+        var html = "";
+        for (let i = 0; i < roles.length; i++) {
+            html += "<li role='" + roles[i].linkRoleId + "' onclick='itemClick(this)'>" + roles[i].label + "</li>"
+        }
+        $("#list ul").append(html);
+    }
+
+    function switchShareLink(open) {
+        $.ajax({
+            type: "GET",
+            url: url + "/netdrive/switchShareLink.do",
+            data: {"fid": fid, "action": open},
+            dataType: "json",
+            success: function (data) {
+                if (open === "open") {
+                    password = data.password;
+                    shareUrl = data.shareURL;
+                    expireTime = data.expireTime;
+                    linkRoleId = data.linkRoleId;
+
+                    init(false);
+                    initRoles(false);
+                    passwordStatus(password != null && password != "" ? true : false, false);
+                    changeDatePanel(true, false);
+                    $(".role").show();
+                } else {
+                    $(".role").hide();
+                }
+            }
+        });
+    }
+
+    function initRoles(silent) {
+        var roleIds = [];
+        for (var i = 0; i < roles.length; i++) {
+            var role = roles[i];
+            roleIds.push(role.linkRoleId);
+        }
+        var q = _.indexOf(roleIds, linkRoleId);
+        selectByIndex(q, true);
+
+        if (silent) {
+            document.querySelector("#canwatch").addEventListener('click', function (e) {
+                if ($(".dropdowm-select-list").hasClass("isdisplay")) {
+                    $(".dropdowm-select-list").removeClass("isdisplay")
+                } else {
+                    $(".dropdowm-select-list").addClass("isdisplay");
+                }
+                e.stopPropagation();
+            }, false);
+
+            document.addEventListener('click', function () {
+                document.querySelector('#list').classList.remove("isdisplay");
+            });
+        }
+    }
+
+    function initLinkShareSwitch() {
+        if (newShareAll == 1) {
+            $('#view151').attr("checked", "checked");
+        } else {
+            $(".role").hide();
+        }
+        $('#openSwitch').click(function (e) {
+            if ($(e.target).is("input")) {
+                return;
+            }
+            if ($(".role").is(":hidden")) {
+                switchShareLink("open");
+            } else {
+                switchShareLink("close");
+            }
+        });
+    }
+
+    function passwordStatus(checked, silent) {
+        var isHttps;
+        if (checked) {
+            $("#pwdCheckBox").addClass("checked");
+            $("#setPwdLab").text("访问密码");
+            if (password) {
+                $('.password').val(password);
+            } else {
+                setAddPwd();
+            }
+            $(".checkbox-link4 .item-1 ").addClass("f-inline-block");
+            $(".checkbox-link4 .item-1").removeClass('f-hide');
+        } else {
+            $("#pwdCheckBox").removeClass("checked");
+            $("#setPwdLab").text("访问此链接需要输入密码");
+            this.$(".checkbox-link4 .item-1").removeClass('f-inline-block');
+            this.$(".checkbox-link4 .item-1 ").addClass("f-hide");
+            if (!silent) {
+                var isHttps = false;
+                if (location.protocol == "https:") {
+                    isHttps = true;
+                } else {
+                    isHttps = false;
+                }
+                $.ajax({
+                    type: "GET",
+                    url: url + "/netdrive/setSharePassword.do",
+                    data: {"fid": fid, "password": "", "isHttps": isHttps},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.success) {
+                            password = "";
+                            $('.password').val(password);
+                            console.log("密码修改成功");
+                        } else {
+                            console.log("密码修改失败");
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    function initExpireDate() {
+        var $expireTimeBox = $('.date-expire');
+        $expireTimeBox.datepicker({minDate: 1}).on("change", function () {
+            var exDate = $expireTimeBox.datepicker("getDate");
+            console.log("datepicker______________")
+            $.ajax({
+                type: "GET",
+                url: url + "/netdrive/setLinkShareExpireTime.do",
+                data: {"fid": fid, "expireTime": exDate.getTime() / 1000},
+                dataType: "json",
+                success: function (data) {
+                    console.log("设置截止日期成功！");
+                    expireTime = new Date(data.expireTime * 1000);
+                }
+            });
+        });
+    }
+
+    function changeDatePanel(checked, silent) {
+        if (checked) {
+            $("#dateCheckBox").addClass("checked");
+            if (expireTime) {
+                onExpireTimeSetted(expireTime);
+            } else {
+                setDefaultExpireTime(function (expireTime) {
+                    onExpireTimeSetted(expireTime);
+                });
+            }
+        } else {
+            $("#dateCheckBox").removeClass("checked");
+            $(".checkbox-link5 .item-1").removeClass('f-inline-block');
+            $(".checkbox-link5 .item-1 ").addClass("f-hide");
+            if (silent) {
+                return;
+            }
+            closeExpireTime();
+        }
+    }
+
+    function changePwd($e) {
+        $div = $($e);
+        passwordStatus($div.hasClass('checked') ? false : true, false);
+    }
+
+    function changeDate($e) {
+        $div = $($e);
+        changeDatePanel($div.hasClass('checked') ? false : true, false);
+    }
+
+    function showDatePicker() {
+        var $expireTimeBox = $('.date-expire');
+        $expireTimeBox.focus();
+    }
+
+    function onExpireTimeSetted(expireTime) {
+        $(".checkbox-link5 .item-1 ").addClass("f-inline-block");
+        $(".checkbox-link5 .item-1").removeClass('f-hide');
+
+        var $expireTimeBox = $('.datepicker');
+        $expireTimeBox.datepicker('setDate', expireTime);
+        $(".datepicker input").val(format(expireTime, "yyyy-MM-dd"));
+    }
+
+    function setDefaultExpireTime(scucess) {
+        $.ajax({
+            type: "GET",
+            url: url + "/netdrive/setLinkShareExpireTime.do",
+            data: {"fid": fid},
+            dataType: "json",
+            success: function (data) {
+                console.log("设置截止日期成功！");
+                expireTime = new Date(data.expireTime * 1000);
+                scucess(expireTime);
+            }
+        });
+    }
+
+    function closeExpireTime() {
+        $.ajax({
+            type: "GET",
+            url: url + "/netdrive/setLinkShareExpireTime.do",
+            data: {"fid": fid, "expireTime": 0},
+            dataType: "json",
+            success: function () {
+                console.log("关闭截止日期成功！");
+                expireTime = undefined;
+            }
+        });
+    }
+
+    function setAddPwd() {
+        var isHttps = false;
+        var pwd = Math.round(Math.random() * 100000).toString();
+        var isHttps = false;
+        if (location.protocol == "https:") {
+            isHttps = true;
+        } else {
+            isHttps = false;
+        }
+        $.ajax({
+            type: "GET",
+            url: url + "/netdrive/setSharePassword.do",
+            data: {"fid": fid, "password": pwd, "isHttps": isHttps},
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    password = pwd;
+                    $('.password').val(pwd);
+                    console.log("密码修改成功");
+                } else {
+                    console.log("密码修改失败");
+                }
+            }
+        });
+    }
+
+    function itemClick($e) {
+        $li = $($e);
+        if (!$li.hasClass('no-select')) {
+            var index = $li.index();
+            selectByIndex(index);
+        }
+        removeList();
+    }
+
+    function selectByIndex(index, opt_silent) {
+        opt_silent = _.isBoolean(opt_silent) ? opt_silent : false;
+        var oldIndex = this.index;
+        if (index == oldIndex || index == -1) {
+            return;
+        }
+        ;
+        this.index = index;
+        var item = roles[index];
+        this.$(".m-hd").text(item.label);
+        this._curSelected = item;
+        if (opt_silent) {
+            return;
+        }
+        modifyLinkShareRole(this.fileId, item.linkRoleId);
+    }
+
+    function modifyLinkShareRole(fileId, linkRoleId) {
+        $.ajax({
+            type: "GET",
+            url: url + "/netdrive/modifyLinkShareRole.do",
+            data: {"fid": fid, "linkRoleId": linkRoleId},
+            dataType: "json",
+            success: function (data) {
+                console.log("成功修改linkRoleId");
+            }
+        });
+    }
+
+    function removeList() {
+        $(".dropdowm-select-list").removeClass("isdisplay");
+    }
+
+    function format(date, fmt) {
+        date = new Date(date);
+        var o = {
+            "M+": date.getMonth() + 1, //月份
+            "d+": date.getDate(), //日
+            "h+": date.getHours() % 12 == 0 ? 12 : date.getHours() % 12, //小时
+            "H+": date.getHours(), //小时
+            "m+": date.getMinutes(), //分
+            "s+": date.getSeconds(), //秒
+            "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+            "S": date.getMilliseconds() //毫秒
+        };
+        var week = {
+            "0": "/u65e5",
+            "1": "/u4e00",
+            "2": "/u4e8c",
+            "3": "/u4e09",
+            "4": "/u56db",
+            "5": "/u4e94",
+            "6": "/u516d"
+        };
+        if (/(y+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+        if (/(E+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f" : "/u5468") : "") + week[date.getDay() + ""]);
+        }
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            }
+        }
+        return fmt;
+    }
+
+    function listenToCopy() {
+        var $btn = $("#copyBtn");
+        var clipboard = new Clipboard($btn.get(0), {
+            text: function () {
+                if (password) {
+                    var linkCap = "链接";
+                    var pwdCap = "密码";
+                    return linkCap + " : " + shareUrl + " " + pwdCap + " : " + password;
+                } else {
+                    return shareUrl;
+                }
+            }
+        });
+
+        clipboard.on('success', function (e) {
+            e.clearSelection();
+            var copyCap0 = "链接和密码已拷贝到剪贴板";
+            var copyCap1 = "链接已拷贝到剪贴板";
+            var tip = password.length > 0 ? copyCap0 : copyCap1;
+            console.log("success:" + tip);
+        });
+
+        clipboard.on('error', function (e) {
+            console.log("error");
+        });
+    }
+
+    function initQRcode() {
+        $('.qrcode-btn').mouseenter(function showQRCodePopup(e) {
+            var $qpopup = $(".qrcode-pop");
+            if ($qpopup.hasClass("opened")) {
+                return;
+            }
+            $qpopup.show();
+            $qpopup[0].offsetWidth;
+            $qpopup.addClass("opened");
+            $(".qrcode-canvas").empty().qrcode({
+                width: 160,
+                height: 160,
+                text: shareUrl
+            });
+            return false;
+        });
+        $('.qrcode-btn').mouseleave(function hideQRCodePopup($e) {
+            var $qpopup = $('.qrcode-pop');
+            if ($qpopup.css("display") == "none") {
+                return;
+            }
+            $qpopup.transitionEndOnce(function () {
+                !$qpopup.hasClass("opened") && $qpopup.hide();
+            })
+            $qpopup.removeClass("opened");
+        });
+    }
+</script>
+</body>
+</html>

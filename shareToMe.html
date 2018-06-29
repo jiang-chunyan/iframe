@@ -1,0 +1,88 @@
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分享</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/introjs.css"/>
+    <link rel="stylesheet" href="css/nprogress.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/cropper.css">
+    <link rel="stylesheet" href="css/application.css">
+    <link rel="stylesheet" href="css/github-markdown.css">
+
+    <style>
+        div.m-window.share-file-window {
+            width: 720px;
+        }
+        @media screen and (min-width:320px) and (max-width:767px) {
+            div.m-window.share-file-window {
+                width: 100%!important;
+            }
+            .share-win .list-group .checkbox-link5 {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="m-window share-file-window animated" tabindex="1" style="height: auto;left:50%;top: 20%;transform: translate(-50%, -20%);margin-top:0;-webkit-box-shadow:none;box-shadow:none;">
+    <header class="window-header" style="cursor: default;"><span class="title"></span>
+    </header>
+    <section class="window-body">
+        <div id="share-window">
+            <div class="share-win">
+                <div class="">
+                    <div class="caption" style="display: block;" id="owner"></div>
+                    <div>
+                        <section class="block share-setting">
+                            <div class="">
+                                <div class="block-bd">
+                                    <div class="list-group share-set">
+                                        <div class="item setting">
+                                            <div class="left f-emph">公开链接共享</div>
+                                            <div class="right"></div>
+                                        </div>
+                                        <div class="item role">
+                                            <input id="link" class="form-control br-2" readonly="readonly">
+                                            <div class="list1 f-clb">
+                                                <ul>
+                                                    <li class="list1-left"></li>
+                                                    <li class="list1-right m-qrcode f-fr">
+                                                        <button class="qrcode-btn icon" title="扫描二维码快速加入">
+                                                            <div class="qrcode-pop f-tc" title="扫描二维码加入" style="display: none;">
+                                                                <div class="qrcode-canvas"><canvas width="160" height="160"></canvas></div>
+                                                                <div class="intro">
+                                                                    <p>扫描二维码快速加入</p>
+                                                                    <ul>
+                                                                        <li><i>打开微信</i><br>点击底部的“发现”<br>→使用“扫描QR Code”</li>
+                                                                        <li><i>打开永中云文档</i><br>→点击底部的“全部文件”<br>→使用左上角的“扫一扫”</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                    </li>
+                                                    <li class="list1-right">
+                                                        <a id="copyBtn" class="input-group-btn button done">
+                                                            <span>复制链接</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="loading"></div>
+        </div>
+    </section>
+    <footer class="window-footer text-right"></footer>
+</div>
+
+</body>
+</html>

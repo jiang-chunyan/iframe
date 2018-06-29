@@ -29,7 +29,7 @@ html,body,iframe {
 
     /* width: 50%; */
     width: 720px;
-    height: 80%;
+    height: 52%;
     margin: 0 auto;
 }
 #bg {
@@ -231,6 +231,9 @@ iframe {
     }
     .edit {
         display: none!important;
+    }
+    .showiframe {
+        width: 85%;
     }
 }
 @media screen and (min-width:501px) and (max-width:767px) {
