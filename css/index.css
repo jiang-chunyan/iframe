@@ -27,7 +27,7 @@ html,body,iframe {
     transform: translate(-50%, -50%);
     z-index: 2000;
 
-    
+
     width: 720px;
     height: 52%;
     margin: 0 auto;
@@ -58,11 +58,11 @@ html,body,iframe {
 }
 #wrap {
     position: relative;
-    top: 80px;
-    width: 42%;
+    top: 50px;
+    /* width: 42%; */
     /* height: 89%; */
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
     border: 2px solid #ccc;
     z-index: 1;
 }
@@ -200,12 +200,12 @@ iframe {
 
 @media screen and (min-width:768px) and (max-width:1500px) {
     #wrap {
-        width: 65%;
+        /* width: 65%; */
     }
 }
 @media screen and (min-width:320px) and (max-width:767px) {
     #wrap {
-        width: 95%;
+        /* width: 95%; */
         /* ios touch问题处理 */
         -webkit-overflow-scrolling: touch;
         overflow-y: scroll;
@@ -238,7 +238,7 @@ iframe {
 }
 @media screen and (min-width:501px) and (max-width:767px) {
     #wrap {
-        width: 80%;
+        /* width: 80%; */
         /* ios touch问题处理 */
         -webkit-overflow-scrolling: touch;
         overflow-y: scroll;
