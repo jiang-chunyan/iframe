@@ -1,6 +1,7 @@
 
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>分享</title>
     <link rel="stylesheet" href="css/normalize.css">
@@ -13,8 +14,48 @@
     <link rel="stylesheet" href="css/github-markdown.css">
 
     <style>
+        .m-window > header, .m-alert > header {
+            padding: 0!important;
+        }
         div.m-window.share-file-window {
-            width: 100%;
+            width: 720px;
+        }
+        button.icon.closeBtn {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 11px;
+            top: 50%;
+            /* margin-top: -177px; */
+            cursor: pointer;
+            background-position: 0 -360px;
+            background-image: url('img/mdisk/icon5_1_8.svg');
+            background-size: 660px 1500px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            display: inline-block;
+            vertical-align: middle;
+            border: none;
+            outline: none;
+        }
+        .aaa {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 11px;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+            background-position: 0 -360px;
+            background-image: url('img/mdisk/icon5_1_8.svg');
+            background-size: 660px 1500px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            display: inline-block;
+            vertical-align: middle;
+            border: none;
+            outline: none;
+            background-color: red!important;
         }
         @media screen and (min-width:320px) and (max-width:767px) {
             /* div.m-window.share-file-window {
@@ -25,10 +66,30 @@
             }
         }
     </style>
+
+    <script type="text/javascript">
+        function fIframe(){
+    	    alert('iframe function execute success');
+        }
+
+        function exec_main(){
+            if(typeof(exec_obj)=='undefined'){
+              exec_obj = document.createElement('iframe');
+              exec_obj.name = 'tmp_frame';
+              exec_obj.src = 'http://localhost:9090/iframe/execA.html';
+              exec_obj.style.display = 'none';
+              document.body.appendChild(exec_obj);
+            }else{
+              exec_obj.src = 'http://localhost:9090/iframe/execA.html?' + Math.random();
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="m-window share-file-window animated" tabindex="1" style="height: auto;left:50%;top: 20%;transform: translate(-50%, -20%);margin-top:0;-webkit-box-shadow:none;box-shadow:none;">
-    <header class="window-header" style="cursor: default;"><span class="title"></span>
+    <header class="window-header" style="cursor: default;">
+        <span class="title"></span>
+        <button type="button" class="icon closeBtn" onclick="exec_main()"></button>
     </header>
     <section class="window-body">
         <div id="share-window">
