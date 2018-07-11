@@ -7,8 +7,36 @@
 
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+
+    <style>
+        button.icon.closeBtn {
+            display: inline-block;
+            vertical-align: middle;
+            border: none;
+            outline: none;
+            z-index: 10001;
+            background-repeat: no-repeat;
+        }
+    </style>
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        function exec_iframe(){
+            if(typeof(exec_obj)=='undefined'){
+                // 1.在 A.html 创建一个 iframe
+                // 2.iframe的页面放在 B.html 同域下，命名为 execB.html
+                // 3.execB.html 里有调用 B.html fIframe方法的js调用
+                exec_obj = document.createElement('iframe');
+                exec_obj.name = 'tmp_frame';
+                exec_obj.src = 'http://192.168.1.197:9090/execB.html';
+                exec_obj.style.display = 'none';
+                document.body.appendChild(exec_obj);
+            }else{
+                exec_obj.src = 'http://192.168.1.197:9090/execB.html?' + Math.random();
+            }
+       }
+    </script>
 </head>
 
 
@@ -22,9 +50,11 @@
 
 <!-- 分享效果 -->
     <div id="bg"></div>
-    <div class="showiframe">
-        <!-- <iframe src="http://www.bing.com" frameborder="0" scrolling="yes"></iframe> -->
-        <iframe src="index.html" frameborder="0" scrolling="yes"></iframe>
+    <div class="showiframe" id="showiframe">
+        <!-- 改 -->
+        <!-- <iframe src="http://192.168.51.14:8080/test/index.html" frameborder="0" scrolling="yes" id="iframeId" name="myframe" ></iframe> -->
+        <iframe src="http://192.168.1.197:9090/iframe/index.html" frameborder="0" scrolling="yes" id="iframeId" name="myframe"></iframe>
+        <!-- <iframe src="http://192.168.1.197:9090/iframe/shareToMe.html" frameborder="0" scrolling="yes" id="iframeId" name="myframe"></iframe> -->
     </div>
 
 <!-- header -->
@@ -47,9 +77,6 @@
     	<div class="modal-dialog">
     		<div class="modal-content">
     			<div class="modal-header">
-    				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-    					&times;
-    				</button> -->
     				<h4 class="modal-title" id="myModalLabel" style="text-align: center;">
     					提示
     				</h4>
@@ -63,9 +90,6 @@
     				</button>
     				<button type="button" class="btn btn-default" data-dismiss="modal">取消
     				</button>
-    				<!-- <button type="button" class="btn btn-primary">
-    					确定
-    				</button> -->
     			</div>
     		</div>
     	</div>
@@ -101,31 +125,49 @@
 
 <!-- content -->
     <div id="wrap">
-        <iframe src="http://dcs.yozosoft.com:8000/2018/06/30/MTgwNjMwNDcyNjE2NDc.html" frameborder="0" scrolling="yes"></iframe>
+        <!-- <iframe src="http://dcs.yozosoft.com/onlinefile?downloadUrl=http://www.yozodcs.com/example/doc/doctest.docx&convertType=0" frameborder="0" scrolling="yes"></iframe> -->
         <!-- <iframe src="http://dcs.yozosoft.com:8000/2018/06/30/MTgwNjMwNDcyNjE2NDc.html" frameborder="0" scrolling="yes"></iframe> -->
+        <iframe src="http://www.bing.com" frameborder="0" scrolling="yes"></iframe>
     </div>
 
 
 
     <script type="text/javascript">
+
 // loading效果
         window.onload = function() {
             $('body').removeClass('is-loading')
+//有X
+            $(".share").on("click", function(e){
+                $(".showiframe").css('display', 'block');
+                $("#bg").show();
+            })
+        }
+
+        function fMain() {
+            $(".showiframe").css('display', 'none');
+            $("#bg").hide();
         }
 
 // 点击分享
-        $(".share").on("click", function(e){
-            $(".showiframe").css('display', 'block');
-            $("#bg").show();
-            $(document).on("click", function(){
-                $(".showiframe").css('display', 'none');
-                $("#bg").hide();
-            });
-                e.stopPropagation();
-        });
-        $(".showiframe").on("click", function(e){
-            e.stopPropagation();
-        });
+
+
+        // $(".share").on("click", function(e){
+        //     $(".showiframe").css('display', 'block');
+        //     $("#bg").show();
+        //
+        //     $(document).on("click", function(){
+        //         console.log('11111')
+        //         $(".showiframe").css('display', 'none');
+        //         $("#bg").hide();
+        //     });
+        //     e.stopPropagation();
+        // });
+        // $(".showiframe").on("click", function(e){
+        //     e.stopPropagation();
+        // });
+
+
 
 
 // 点击小三角
@@ -145,7 +187,7 @@
 
         $(function(){
             $('#wrap').height(function(index, h) {
-                return ($(window).height() - 50) 
+                return ($(window).height() - 50)
             })
         })
 
