@@ -29,11 +29,19 @@
                 // 3.execB.html 里有调用 B.html fIframe方法的js调用
                 exec_obj = document.createElement('iframe');
                 exec_obj.name = 'tmp_frame';
+<<<<<<< HEAD
                 exec_obj.src = 'http://192.168.1.197:9090/execB.html';
                 exec_obj.style.display = 'none';
                 document.body.appendChild(exec_obj);
             }else{
                 exec_obj.src = 'http://192.168.1.197:9090/execB.html?' + Math.random();
+=======
+                exec_obj.src = 'http://192.168.1.197:9090/iframe/execB.html';
+                exec_obj.style.display = 'none';
+                document.body.appendChild(exec_obj);
+            }else{
+                exec_obj.src = 'http://192.168.1.197:9090/iframe/execB.html?' + Math.random();
+>>>>>>> b8f98f27a501d60b581313a14388f24f4d17e63b
             }
        }
     </script>
@@ -51,9 +59,13 @@
 <!-- 分享效果 -->
     <div id="bg"></div>
     <div class="showiframe" id="showiframe">
+<<<<<<< HEAD
         <!-- 改 -->
         <!-- <iframe src="http://192.168.51.14:8080/test/index.html" frameborder="0" scrolling="yes" id="iframeId" name="myframe" ></iframe> -->
         <iframe src="http://192.168.1.197:9090/iframe/index.html" frameborder="0" scrolling="yes" id="iframeId" name="myframe"></iframe>
+=======
+        <iframe src="http://192.168.1.197:9090/iframe/index.html" frameborder="0" scrolling="yes" id="iframeId" name="myframe" ></iframe>
+>>>>>>> b8f98f27a501d60b581313a14388f24f4d17e63b
         <!-- <iframe src="http://192.168.1.197:9090/iframe/shareToMe.html" frameborder="0" scrolling="yes" id="iframeId" name="myframe"></iframe> -->
     </div>
 
